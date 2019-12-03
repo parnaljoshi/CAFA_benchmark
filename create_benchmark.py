@@ -35,6 +35,7 @@ def read_gaf(handle):
     with open(handle, 'r') as handle:
         for rec in GOA.gafiterator(handle):
             all_protein_name.add(rec['DB_Object_ID'])
+            print(all_protein_name)
             if GOA.record_has(rec, Evidence) and rec['DB'] == 'UniProtKB':
                 if rec['DB_Object_ID'] not in dic:
                     dic[rec['DB_Object_ID']] = {rec['Aspect']:set([rec['GO_ID']])}  
@@ -59,7 +60,6 @@ def analyze(t1_dic,t2_dic,all_protein_t1):
         if protein not in t1_dic and protein in all_protein_t1: ## this going to be in NK
             ### check which ontology got new annotated
             for ontology in t2_dic[protein]:
-                print(t2_dic[protein][ontology])
                 NK_dic[ontology][protein] = t2_dic[protein][ontology]
         ## check the protein that in t2_dic and appear in t1
         elif protein  in t1_dic :
