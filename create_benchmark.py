@@ -34,6 +34,7 @@ def read_gaf(handle):
     Evidence = {'Evidence': set(['EXP','IDA','IPI','IMP','IGI','IEP'])}
     with open(handle, 'r') as handle:
         for rec in GOA.gafiterator(handle):
+            print(rec['DB_Object_ID'])
             all_protein_name.add(rec['DB_Object_ID'])
             if GOA.record_has(rec, Evidence) and rec['DB'] == 'UniProtKB':
                 if rec['DB_Object_ID'] not in dic:
@@ -43,7 +44,6 @@ def read_gaf(handle):
                         dic[rec['DB_Object_ID']][rec['Aspect']]=set([rec['GO_ID']])  
                     else:
                         dic[rec['DB_Object_ID']][rec['Aspect']].add(rec['GO_ID'])
-    print(name)
     return name,dic ,all_protein_name
 '''
 function : given t1 dic, t2 dic, we provide the dic for NK, and LK dic for each ontology
