@@ -70,7 +70,7 @@ def analyze(t1_dic,t2_dic,all_protein_t1):
                 for ontology in t2_dic[protein]:
                     if ontology not in t1_dic[protein]: # for those lack, include in LK
                         LK_dic[ontology][protein] = t2_dic[protein][ontology]
-    print(t1_dic)
+    print(t1_dic[])
     return NK_dic,LK_dic 
     
 '''
