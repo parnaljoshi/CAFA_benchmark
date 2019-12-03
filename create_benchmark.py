@@ -35,7 +35,6 @@ def read_gaf(handle):
     with open(handle, 'r') as handle:
         for rec in GOA.gafiterator(handle):
             all_protein_name.add(rec['DB_Object_ID'])
-            print(all_protein_name)
             if GOA.record_has(rec, Evidence) and rec['DB'] == 'UniProtKB':
                 if rec['DB_Object_ID'] not in dic:
                     dic[rec['DB_Object_ID']] = {rec['Aspect']:set([rec['GO_ID']])}  
