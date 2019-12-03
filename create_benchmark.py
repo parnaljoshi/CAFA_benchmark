@@ -43,6 +43,7 @@ def read_gaf(handle):
                         dic[rec['DB_Object_ID']][rec['Aspect']]=set([rec['GO_ID']])  
                     else:
                         dic[rec['DB_Object_ID']][rec['Aspect']].add(rec['GO_ID'])
+    print(name)
     return name,dic ,all_protein_name
 '''
 function : given t1 dic, t2 dic, we provide the dic for NK, and LK dic for each ontology
@@ -56,7 +57,6 @@ def analyze(t1_dic,t2_dic,all_protein_t1):
     
     for protein in t2_dic:
         ## check the protein in t2_dic but not appear in t1
-        print(t2_dic[protein])
         if protein not in t1_dic and protein in all_protein_t1: ## this going to be in NK
             ### check which ontology got new annotated
             for ontology in t2_dic[protein]:
